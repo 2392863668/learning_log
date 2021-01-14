@@ -25,18 +25,18 @@ def topic(request, topic_id):
 	return render(request, 'learning_logs/topic.html', context)
 
 def new_topic(request):
-    """添加新主题"""
-    if request.method != 'POST':
-        # 未提交数据：创建一个新表单
-        form = TopicForm()
-    else:
-        # POST 提交数据，对数据进行处理
-        form = TopicForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('learning_logs:topics'))
-    context = {'form': form}
-    return render(request, 'learning_logs/new_topic.html', context)
+	"""添加新主题"""
+	if request.method != 'POST':
+		# 未提交数据：创建一个新表单
+		form = TopicForm()
+	else:
+		# POST 提交数据，对数据进行处理
+		form = TopicForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('learning_logs:topics'))
+	context = {'form': form}
+	return render(request, 'learning_logs/new_topic.html', context)
 
 def new_entry(request, topic_id):
 	"""在特定主题中添加新条目"""
